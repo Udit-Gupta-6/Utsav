@@ -21,6 +21,15 @@ app.use(express.urlencoded(true)); //convert POST data to JSON object
 app.use(cors());
 
 require('dotenv').config();//reading .env file
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://utsav-vite-kohl.vercel.app/"
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true
+}));
 
 doMongooseConnection();
 
